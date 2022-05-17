@@ -11,6 +11,18 @@ const morgan = require('morgan')
 app.use(cors())
 app.use(morgan('dev'))
 
+app.get('/my-list/:user', async (req, res, next) => {
+    try {
+        const myList = await db.Brewery.find({username: 'alex'})
+        console.log(myList)
+        res.send(myList)
+    } catch (error) {
+        req.error = error
+        console.log(error)
+        return next()
+    }
+})
+
 app.post('/new-user', async (req, res, next) => {
     console.log(req.body)
     // try {
