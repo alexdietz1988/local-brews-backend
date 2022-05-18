@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const PORT = 4000
 require('./config/db.connection.js')
-require('method-override')
 const cors = require('cors')
 const morgan = require('morgan')
 const controllers = require('./controllers')

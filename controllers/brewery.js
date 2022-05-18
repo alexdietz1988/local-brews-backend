@@ -11,25 +11,11 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.delete('/:user/:id', async (req, res) => {  
     try {
-        await db.Brewery.findByIdAndUpdate(req.params.id, req.body)
-        return res.redirect('/')
+        await db.Brewery.findOneAndDelete({username: req.params.user, brewery_id: req.params.id})
     } catch (error) {
-        req.error = error
-        console.log(error)
-        return next()
-    }
-})
-
-router.delete('/:id', async (req, res, next) => {
-    try {
-        await db.Brewery.findByIdAndDelete(req.params.id)
-        return res.redirect('/')
-    } catch (error) {
-        req.error = error
-        console.log(error)
-        return next()
+        res.status(400).json(error)
     }
 })
 
