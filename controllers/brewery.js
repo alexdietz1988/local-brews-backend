@@ -4,6 +4,7 @@ const db = require('../models')
 
 router.post('/', async (req, res) => {  
     try {
+        console.log(req.body)
         let newBrewery = await db.Brewery.create(req.body)
         res.json(newBrewery)
     } catch (error) {

@@ -15,6 +15,7 @@ router.get('/my-list/:user', async (req, res, next) => {
 
 router.post('/beer', async (req, res) => {  
     try {
+        console.log(req.body)
         let newBeer = await db.Beer.create(req.body)
         res.json(newBeer)
     } catch (error) {

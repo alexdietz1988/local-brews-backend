@@ -6,7 +6,7 @@ const beerSchema = new mongoose.Schema({
 
     name: {type: String, required: [true, 'no name given']},
     style: String,
-    rating: Number,
+    rating: String,
 })
 
 const Beer = mongoose.model('Beer', beerSchema)

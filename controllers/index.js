@@ -1,4 +1,4 @@
 module.exports = {
     brewery: require('./brewery.js'),
-    lists: require('./logs.js')
+    logs: require('./logs.js')
 }
