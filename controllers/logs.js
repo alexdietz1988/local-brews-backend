@@ -14,6 +14,7 @@ router.get('/my-list/:username', async (req, res) => {
 router.get('/beer-log/:username', async (req, res) => {
     try {
         const beerLog = await db.Beer.find({username: req.params.username})
+        console.log(beerLog)
         res.json(beerLog)
     } catch (error) {
         res.status(400).json(error)
