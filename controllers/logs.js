@@ -13,4 +13,13 @@ router.get('/my-list/:user', async (req, res, next) => {
     }
 })
 
+router.post('/beer', async (req, res) => {  
+    try {
+        let newBeer = await db.Beer.create(req.body)
+        res.json(newBeer)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 module.exports = router

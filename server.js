@@ -12,6 +12,6 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 app.use('/brewery', controllers.brewery)
-app.use('/lists', controllers.lists)
+app.use('/logs', controllers.logs)
 
 app.listen(PORT, () => console.log('listening on PORT ' + PORT))
