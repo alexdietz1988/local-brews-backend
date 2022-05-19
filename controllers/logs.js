@@ -43,4 +43,13 @@ router.post('/beer', async (req, res) => {
     }
 })
 
+router.delete('/beer/:id', async (req, res) => {  
+    try {
+        console.log(req.params.id)
+        await db.Beer.findByIdAndDelete(req.params.id)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 module.exports = router
