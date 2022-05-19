@@ -34,7 +34,8 @@ router.get('/beer-log/:username/:brewery', async (req, res) => {
 
 router.post('/beer', async (req, res) => {  
     try {
-        const newBeer = await db.Beer.create(req.body)
+        console.log(req.body)
+        let newBeer = await db.Beer.create(req.body)
         res.json(newBeer)
     } catch (error) {
         res.status(400).json(error)
