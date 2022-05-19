@@ -4,7 +4,7 @@ const db = require('../models')
 
 router.get('/my-list/:username', async (req, res) => {
     try {
-        const myList = await db.Brewery.find({username: req.params.username})
+        let myList = await db.Brewery.find({username: req.params.username})
         res.json(myList)
     } catch (error) {
         res.status(400).json(error)
@@ -13,7 +13,7 @@ router.get('/my-list/:username', async (req, res) => {
 
 router.get('/beer-log/:username', async (req, res) => {
     try {
-        const beerLog = await db.Beer.find({username: req.params.username})
+        let beerLog = await db.Beer.find({username: req.params.username})
         console.log(beerLog)
         res.json(beerLog)
     } catch (error) {
@@ -21,11 +21,12 @@ router.get('/beer-log/:username', async (req, res) => {
     }
 })
 
-router.get('/beer-log/:username/:brewery', async (req, res) => {
+router.get('/beer-log/:username/:breweryId', async (req, res) => {
     try {
-        const breweryBeerLog = await db.Beer.find({
+        let breweryBeerLog = await db.Beer.find({
             username: req.params.username,
-            brewery_name: req.params.brewery})
+            brewery_id: req.params.breweryId})
+        console.log(breweryBeerLog)
         res.json(breweryBeerLog)
     } catch (error) {
         res.status(400).json(error)
