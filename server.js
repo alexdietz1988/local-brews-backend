@@ -14,7 +14,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('You have reached the Local Brews backend')
+    res.send('Hello, you have reached the Local Brews backend')
 })
 
 app.use('/brewery', controllers.brewery)
