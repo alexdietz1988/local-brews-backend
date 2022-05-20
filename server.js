@@ -6,7 +6,6 @@ const morgan = require('morgan')
 const controllers = require('./controllers')
 require('dotenv').config()
 const PORT = process.env.PORT || 4000
-console.log(PORT)
 
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))

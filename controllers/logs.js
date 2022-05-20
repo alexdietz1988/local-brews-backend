@@ -14,7 +14,6 @@ router.get('/my-list/:username', async (req, res) => {
 router.get('/beer-log/:username', async (req, res) => {
     try {
         let beerLog = await db.Beer.find({username: req.params.username})
-        console.log(beerLog)
         res.json(beerLog)
     } catch (error) {
         res.status(400).json(error)
@@ -26,7 +25,6 @@ router.get('/beer-log/:username/:breweryId', async (req, res) => {
         let breweryBeerLog = await db.Beer.find({
             username: req.params.username,
             brewery_id: req.params.breweryId})
-        console.log(breweryBeerLog)
         res.json(breweryBeerLog)
     } catch (error) {
         res.status(400).json(error)
@@ -35,7 +33,6 @@ router.get('/beer-log/:username/:breweryId', async (req, res) => {
 
 router.post('/beer', async (req, res) => {  
     try {
-        console.log(req.body)
         let newBeer = await db.Beer.create(req.body)
         res.json(newBeer)
     } catch (error) {
@@ -45,7 +42,6 @@ router.post('/beer', async (req, res) => {
 
 router.delete('/beer/:id', async (req, res) => {  
     try {
-        console.log(req.params.id)
         await db.Beer.findByIdAndDelete(req.params.id)
     } catch (error) {
         res.status(400).json(error)
