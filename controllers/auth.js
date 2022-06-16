@@ -1,0 +1,25 @@
+const express = require('express')
+const router = express.Router()
+const bcrypt = require('bcryptjs')
+const { User } = require('../models')
+
+router.post('/', async (req, res) => {
+    try {
+        const foundUser = await User.exists({username: req.body.username})
+        if (foundUser) return res.send('found user')
+
+        const salt = await bcrypt.genSalt(12)
+        const hash = await bcrypt.hash(req.body.password, salt)
+        req.body.password = hash
+
+        await User.create(req.body)
+
+        return res.send('user created')
+    } catch (error) {
+        console.log(error)
+        req.error = error
+        return res.send(error)
+    }
+})
+
+module.exports = router
