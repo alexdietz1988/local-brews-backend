@@ -18,5 +18,6 @@ app.get('/', (req, res) => {
 
 app.use('/brewery', controllers.brewery)
 app.use('/logs', controllers.logs)
+app.use('/auth', controllers.auth)
 
 app.listen(PORT, () => console.log('listening on PORT ' + PORT))
