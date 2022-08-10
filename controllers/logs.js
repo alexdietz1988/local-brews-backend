@@ -34,7 +34,7 @@ router.get('/beer-log/:username/:breweryId', async (req, res) => {
 router.post('/beer', async (req, res) => {  
     try {
         let newBeer = await db.Beer.create(req.body)
-        res.json(newBeer)
+        return res.json(newBeer)
     } catch (error) {
         res.status(400).json(error)
     }
@@ -43,6 +43,7 @@ router.post('/beer', async (req, res) => {
 router.delete('/beer/:id', async (req, res) => {  
     try {
         await db.Beer.findByIdAndDelete(req.params.id)
+        res.json('deleted beer')
     } catch (error) {
         res.status(400).json(error)
     }
