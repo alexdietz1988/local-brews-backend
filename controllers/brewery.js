@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
 router.delete('/:user/:id', async (req, res) => {  
     try {
         await db.Brewery.findOneAndDelete({username: req.params.user, brewery_id: req.params.id})
+        res.json('removed brewery')
     } catch (error) {
         res.status(400).json(error)
     }
