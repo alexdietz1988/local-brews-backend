@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const beerSchema = new mongoose.Schema({
-    username: String,
+    user: String,
     brewery_id: String,
     brewery_name: String,
     brewery_location: String,
