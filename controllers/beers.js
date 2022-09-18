@@ -2,16 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../models')
 
-router.get('/my-list/:user', async (req, res) => {
-    try {
-        let myList = await db.Brewery.find({user: req.params.user})
-        res.json(myList)
-    } catch (error) {
-        res.status(400).json(error)
-    }
-})
-
-router.get('/beer-log/:user', async (req, res) => {
+router.get('/:user', async (req, res) => {
     try {
         let beerLog = await db.Beer.find({user: req.params.user})
         res.json(beerLog)
@@ -20,21 +11,19 @@ router.get('/beer-log/:user', async (req, res) => {
     }
 })
 
-router.get('/beer-log/:user/:breweryId', async (req, res) => {
+router.get('/:user/:breweryId', async (req, res) => {
     try {
-        let breweryLog = await db.Beer.find({
-            user: req.params.user,
-            brewery_id: req.params.breweryId})
-        res.json(breweryLog)
+        const breweryLog = await db.Beer.find({user: req.params.user, brewery_id: req.params.breweryId})
+        res.json({ success: true, data: breweryLog })
     } catch (error) {
         res.status(400).json(error)
     }
 })
 
-router.post('/beer', async (req, res) => {  
+router.post('/', async (req, res) => {  
     try {
-        let newBeer = await db.Beer.create(req.body)
-        res.json(newBeer)
+        await db.Beer.create(req.body)
+        res.json({ success: true })
     } catch (error) {
         res.status(400).json(error)
     }
@@ -43,6 +32,7 @@ router.post('/beer', async (req, res) => {
 router.delete('/beer/:id', async (req, res) => {  
     try {
         await db.Beer.findByIdAndDelete(req.params.id)
+        res.json({ success: true })
     } catch (error) {
         res.status(400).json(error)
     }

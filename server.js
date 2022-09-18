@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
     res.send('Hello, you have reached the Local Brews backend')
 })
 
-app.use('/brewery', controllers.brewery)
-app.use('/logs', controllers.logs)
+app.use('/breweries', controllers.breweries)
+app.use('/beers', controllers.beers)
 app.use('/auth', controllers.auth)
 
 app.listen(PORT, () => console.log('listening on PORT ' + PORT))

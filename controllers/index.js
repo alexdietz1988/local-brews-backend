@@ -1,5 +1,5 @@
 module.exports = {
-    brewery: require('./brewery.js'),
-    logs: require('./logs.js'),
+    breweries: require('./breweries.js'),
+    beers: require('./beers.js'),
     auth: require('./auth.js')
 }
