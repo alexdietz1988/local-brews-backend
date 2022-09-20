@@ -12,6 +12,7 @@ router.get('/:user', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+    console.log(req.body)
     try {
         await db.Brewery.create(req.body)
         res.json({ success: true })
