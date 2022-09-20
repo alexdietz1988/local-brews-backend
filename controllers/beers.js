@@ -11,7 +11,8 @@ router.get('/:user', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {  
+router.post('/', async (req, res) => { 
+    console.log(req.body) 
     try {
         await db.Beer.create(req.body)
         res.json({ success: true })
@@ -20,9 +21,9 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.delete('/beer/:id', async (req, res) => {  
+router.delete('/', async (req, res) => {
     try {
-        await db.Beer.findByIdAndDelete(req.params.id)
+        await db.Beer.findOneAndDelete({name: req.body.name, brewery_id: req.body.brewery_id, user: req.body.user})
         res.json({ success: true })
     } catch (error) {
         res.status(400).json(error)
