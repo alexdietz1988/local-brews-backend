@@ -20,9 +20,13 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.delete('/:user/:id', async (req, res) => {  
+router.delete('/', async (req, res) => {  
     try {
-        await db.Brewery.findOneAndDelete({user: req.params.user, breweryId: req.params.id})
+        await db.Brewery.findOneAndDelete({
+            user: req.body.user,
+            breweryId: req.body.breweryId,
+            name: req.body.name
+        })
         res.json({ success: true })
     } catch (error) {
         res.status(400).json(error)
