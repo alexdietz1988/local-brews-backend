@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
     try {
-        await db.Beer.findOneAndDelete({name: req.body.name, brewery_id: req.body.brewery_id, user: req.body.user})
+        await db.Beer.findOneAndDelete({name: req.body.name, breweryId: req.body.breweryId, user: req.body.user})
         res.json({ success: true })
     } catch (error) {
         res.status(400).json(error)
