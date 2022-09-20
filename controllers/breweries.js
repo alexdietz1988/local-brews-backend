@@ -13,9 +13,8 @@ router.get('/:user', async (req, res) => {
 
 router.post('/', async (req, res) => {  
     try {
-        console.log(req)
-        const newBrewery = await db.Brewery.create(req.body)
-        res.json({ success: true, data: newBrewery })
+        await db.Brewery.create(req.body)
+        res.json({ success: true })
     } catch (error) {
         res.status(400).json(error)
     }
