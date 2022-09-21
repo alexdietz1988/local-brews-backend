@@ -32,13 +32,4 @@ router.delete('/:user/:id', async (req, res) => {
     }
 })
 
-router.get('/:user/:breweryId', async (req, res) => {
-    try {
-        const breweryLog = await db.Beer.find({user: req.params.user, breweryId: req.params.breweryId})
-        res.json({ success: true, data: breweryLog })
-    } catch (error) {
-        res.status(400).json(error)
-    }
-})
-
 module.exports = router
