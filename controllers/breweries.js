@@ -5,7 +5,10 @@ const db = require('../models')
 router.get('/:user', async (req, res) => {
     try {
         const breweries = await db.Brewery.find({user: req.params.user})
-        res.json({ success: true, data: breweries })
+        res.json({
+            success: true,
+            data: breweries
+        })
     } catch (error) {
         res.status(400).json(error)
     }
